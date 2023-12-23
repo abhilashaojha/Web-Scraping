@@ -31,30 +31,31 @@ Here's a breakdown of the main parts of the code:
 
 ### Web Driver Setup:
 
-* A Chrome WebDriver instance is created to automate the Google Chrome browser.
-Google Images Search:
+* A  `Chrome WebDriver` instance is created to automate the Google Chrome browser.
+
+### Google Images Search:
 
 * The script navigates to the Google Images website and enters the search query "electronic waste" into the search box.
 
 ### Dynamic Scrolling:
 
-* The scroll_to_load function is defined to scroll dynamically to the bottom of the search results, loading more images as it goes.
+* The `scroll_to_load` function is defined to scroll dynamically to the bottom of the search results, loading more images as it goes.
 
 ### Image Capture:
 
-* The script captures and saves each image from the search results by finding the image elements using XPath.
+* The script captures and saves each image from the search results by finding the image elements using `XPath`.
 
 * The images are saved in a specified folder with filenames indicating the query and a numerical index.
 
 ### Example Usage:
 
-* The script is executed with the example usage scrape_images("electronic waste", 100), which searches for "electronic waste" and captures 100 images.
+* The script is executed with the example usage ` scrape_images("electronic waste", 100)` , which searches for "electronic waste" and captures 100 images.
 
 ### Web Driver Closure:
 
 Finally, the web driver instance is closed to release browser resources.
 
-This code essentially automates the process of searching for images on Google, scrolling through the results, and capturing a specified number of images related to the given query.
+This code essentially `automates the process of searching for images on Google, scrolling through the results, and capturing a specified number of images related to the given query.`
 
 
 ### References: 
