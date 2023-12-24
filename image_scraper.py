@@ -3,6 +3,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
+from selenium.common.exceptions import NoSuchElementException
 import time
 
 
@@ -41,7 +42,7 @@ def scrape_images(query:str,num_images:int):
 			
 			driver.execute_script('window.scrollTo(0, document.body.scrollHeight)')
 			
-			time.sleep(3)
+			time.sleep(5)
 
 			new_height = driver.execute_script('\
 				return document.body.scrollHeight')
@@ -54,7 +55,7 @@ def scrape_images(query:str,num_images:int):
 				
 				time.sleep(3)
 			
-			except:
+			except Exception as e:
 				pass
 
             # Break the loop if no new images are loaded
@@ -67,32 +68,21 @@ def scrape_images(query:str,num_images:int):
     # Scroll to load more images by calling the function
 	scroll_to_load()
 
+	allimgs = driver.find_elements(By.XPATH,"//img[@class='rg_i Q4LuWd']")
+
 	# Loop to capture and save each image
 	for i in range(1, num_images + 1):
 
-		try:
-			# Dynamic XPath to find each image
-			img_xpath = f'//*[@id="islrg"]/div[1]//div[{i}]/a[1]/div[1]/img'
-			img = driver.find_element(By.XPATH, img_xpath)
+		allimgs[i].screenshot(f'imgs/sample_image/{query} ({i}).png')
 
-			# Enter the location of the folder in which
-			# the images will be saved
+		# Just to avoid unwanted errors
 			
-			img.screenshot(f'imgs/sample_image/{query} ({i}).png')
-			
-			# Each new screenshot will automatically
-			# have its name updated
+		time.sleep(0.3)
 
-			# Just to avoid unwanted errors
-			
-			time.sleep(0.3)
+	
 
-		except:
-		# If we can't find the XPath of an image,
-		# we skip to the next image
-			continue
 	#finally, close the instance of the web driver.
 	driver.quit()
 
 # Example usage:
-scrape_images("electronic waste", 100)
+scrape_images("electronic waste", 200)
