@@ -85,4 +85,4 @@ def scrape_images(query:str,num_images:int):
 	driver.quit()
 
 # Example usage:
-scrape_images("electronic waste", 200)
+scrape_images("electronic waste", 100)
