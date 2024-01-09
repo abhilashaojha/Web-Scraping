@@ -3,7 +3,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
-from selenium.common.exceptions import NoSuchElementException
 import time
 
 
@@ -76,11 +75,8 @@ def scrape_images(query:str,num_images:int):
 		allimgs[i].screenshot(f'imgs/sample_image/{query} ({i}).png')
 
 		# Just to avoid unwanted errors
-			
 		time.sleep(0.3)
-
-	
-
+		
 	#finally, close the instance of the web driver.
 	driver.quit()
 
